@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import './App.css';
+import Hello from './Hello';
 
 function App() {
+
+  const [name, setName] = useState('Bruno');
+
+  const changeName = useCallback((x) => {
+    setName(x);
+  }, [setName]);
+
   return (
     <div className="App">
-      <h4>Trust Me</h4>
+      <p>Hello {name}</p>
+      <Hello changeName={changeName} />
     </div>
   );
 }
